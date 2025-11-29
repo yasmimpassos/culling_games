@@ -2,7 +2,8 @@
 
 using namespace std;
 
-shared_ptr<cg_interfaces::srv::GetMap::Response> get_map_client(shared_ptr<rclcpp::Node> node, shared_ptr<rclcpp::Client<cg_interfaces::srv::GetMap>> client){
+shared_ptr<cg_interfaces::srv::GetMap::Response> get_map_client(shared_ptr<rclcpp::Node> node){
+    auto client = node->create_client<cg_interfaces::srv::GetMap>("get_map");
 
     while (!client->wait_for_service(std::chrono::seconds(1))) {
         RCLCPP_INFO(node->get_logger(), "Esperando get_map estar disponivel!");

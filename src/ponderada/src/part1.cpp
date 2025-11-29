@@ -6,6 +6,8 @@
 #include "map_printer.h"
 #include "graph_adj_matrix.h"
 #include "path_finder.h"
+#include "path_moves.h"
+#include "move_client.h"
 
 using namespace std;
 
@@ -14,9 +16,8 @@ int main(int argc, char * argv[]){
     rclcpp::init(argc, argv);
 
     auto node = std::make_shared<rclcpp::Node>("map_client_node");
-    auto client = node->create_client<cg_interfaces::srv::GetMap>("get_map");
 
-    auto response = get_map_client(node, client);
+    auto response = get_map_client(node);
 
     if (!response) {
         RCLCPP_ERROR(node->get_logger(), "Falha ao obter o mapa!");
@@ -62,14 +63,33 @@ int main(int argc, char * argv[]){
 
     if (path_ids.empty()) {
         RCLCPP_WARN(node->get_logger(), "Nenhum caminho encontrado do start ao goal!");
-    } else {
-        auto path_coords = ids_to_coords(path_ids, cols);
+        rclcpp::shutdown();
+        return 1;   
+    }
 
-        RCLCPP_INFO(node->get_logger(), "Caminho encontrado com %zu nós:", path_coords.size());
-        for (auto & [r, c] : path_coords) {
-            cout << "(" << r << "," << c << ") ";
-        }
-        cout << endl;
+    auto path_coords = ids_to_coords(path_ids, cols);
+
+    RCLCPP_INFO(node->get_logger(), "Caminho encontrado com %zu nós:", path_coords.size());
+
+    for (auto & [r, c] : path_coords) {
+        cout << "(" << r << "," << c << ") ";
+    }
+    cout << endl;
+
+    auto moves = path_to_moves(path_coords);
+
+    for (const auto &m : moves) {
+        cout << m << " ";
+    }
+    cout << endl;
+
+
+    bool ok = execute_move_sequence(node, moves);
+
+    if (!ok) {
+        RCLCPP_ERROR(node->get_logger(), "Falha ao executar a sequência de movimentos!");
+    } else {
+        RCLCPP_INFO(node->get_logger(), "Sequência de movimentos enviada com sucesso.");
     }
 
     rclcpp::shutdown();
