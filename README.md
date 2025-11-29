@@ -99,3 +99,6 @@ Nesta versão:
 - Sempre execute `ros2 run cg maze` antes das partes 1 ou 2.  
 - Se ocorrer algum erro de conexão, aguarde alguns segundos até os serviços estarem disponíveis.  
 - Para reiniciar o ambiente, feche os terminais e rode novamente os comandos de `source`.
+
+https://www.datacamp.com/pt/tutorial/a-star-algorithm
+https://www.youtube.com/watch?v=ARGnPgm2qLw&t 

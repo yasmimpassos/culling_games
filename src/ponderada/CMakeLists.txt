@@ -16,6 +16,8 @@ add_executable(part1
   src/get_map_client.cpp
   src/map_graph.cpp
   src/map_printer.cpp
+  src/graph_adj_matrix.cpp
+  src/path_finder.cpp
 )
 
 ament_target_dependencies(part1
