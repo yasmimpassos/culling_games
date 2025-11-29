@@ -5,25 +5,25 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(cg_interfaces REQUIRED)
 
-add_executable(parte1
-  src/parte1.cpp
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+
+include_directories(include)
+
+add_executable(part1
+  src/part1.cpp
+  src/get_map_client.cpp
+  src/map_graph.cpp
+  src/map_printer.cpp
 )
 
-ament_target_dependencies(parte1 rclcpp cg_interfaces)
-
-install(TARGETS
-  parte1
-  DESTINATION lib/${PROJECT_NAME}
+ament_target_dependencies(part1
+  rclcpp
+  cg_interfaces
 )
 
-add_executable(parte2
-  src/parte2.cpp
-)
-
-ament_target_dependencies(parte2 rclcpp cg_interfaces)
-
-install(TARGETS
-  parte2
+install(TARGETS part1
   DESTINATION lib/${PROJECT_NAME}
 )
 
