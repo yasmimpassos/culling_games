@@ -3,9 +3,11 @@
 Projeto desenvolvido em ROS2 para navegação autônoma utilizando dois algoritmos principais: A* (busca de caminho ótimo) e DFS com backtracking (exploração do ambiente).
 
 ---
+
 ## Execução
 
-Você pode ver o video com a entrega e a execução nesse link: [video](/video/explicacao.mp4)
+Você pode ver o video com a entrega e a execução nesse link:  
+[video](https://drive.google.com/file/d/1XjD0qItmscHT00T94-O740mqyLTp4Kdz/view?usp=drive_link)
 
 ---
 
@@ -87,10 +89,21 @@ Nesta versão:
 
 ## Resumo dos Algoritmos
 
-| Parte  | Algoritmo Principal    | Objetivo                                                    |
-|--------|------------------------|-------------------------------------------------------------|
-| parte1 | A* (A-star)            | Encontrar o caminho ótimo a partir de um mapa completo      |
-| parte2 | DFS + Backtracking + A* | Explorar o mapa, resetar e executar o caminho ótimo         |
+| Parte  | Algoritmo Principal        | Objetivo                                                    |
+|--------|----------------------------|-------------------------------------------------------------|
+| parte1 | A* (A-star)                | Encontrar o caminho ótimo a partir de um mapa completo      |
+| parte2 | DFS + Backtracking + A*    | Explorar o mapa, resetar e executar o caminho ótimo         |
+
+---
+
+## Caso não conheça os algoritmos
+
+Se você não entende como funciona o **A\***, recomendamos os dois primeiros links abaixo:  
+- https://www.datacamp.com/pt/tutorial/a-star-algorithm  
+- https://www.youtube.com/watch?v=ARGnPgm2qLw&t  
+
+Se você não está familiarizado com **DFS (Depth-First Search)**, assista ao terceiro link:  
+- https://www.youtube.com/watch?v=MtIKYXC-sn8&t  
 
 ---
 
@@ -99,6 +112,3 @@ Nesta versão:
 - Sempre execute `ros2 run cg maze` antes das partes 1 ou 2.  
 - Se ocorrer algum erro de conexão, aguarde alguns segundos até os serviços estarem disponíveis.  
 - Para reiniciar o ambiente, feche os terminais e rode novamente os comandos de `source`.
-
-https://www.datacamp.com/pt/tutorial/a-star-algorithm
-https://www.youtube.com/watch?v=ARGnPgm2qLw&t 
