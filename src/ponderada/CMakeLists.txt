@@ -30,5 +30,25 @@ ament_target_dependencies(part1
 install(TARGETS part1
   DESTINATION lib/${PROJECT_NAME}
 )
+add_executable(part2
+  src/part2.cpp             
+  src/sensor_client.cpp         
+  src/explorer.cpp
+  src/map_printer.cpp
+  src/graph_adj_matrix.cpp
+  src/path_finder.cpp
+  src/path_moves.cpp
+  src/move_client.cpp
+  src/reset_client.cpp     
+)
+
+ament_target_dependencies(part2
+  rclcpp
+  cg_interfaces
+)
+
+install(TARGETS part2
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
