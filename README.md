@@ -60,7 +60,7 @@ Em outro terminal:
 
 ```bash
 source install/setup.bash
-ros2 run ponderada parte1
+ros2 run ponderada part1
 ```
 
 Nesta versão:
@@ -76,7 +76,7 @@ Em outro terminal:
 
 ```bash
 source install/setup.bash
-ros2 run ponderada parte2
+ros2 run ponderada part2
 ```
 
 Nesta versão:
